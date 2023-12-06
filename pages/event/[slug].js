@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import Image from 'next/image';
-import { DateRange, LocationOn, Remove, Add } from '@mui/icons-material';
+import { DateRange, LocationOn, Remove, Add, Close } from '@mui/icons-material';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
+//This is used to convert number into repestive months
 const month = {
   1: 'January',
   2: 'February',
@@ -22,6 +23,7 @@ const month = {
 
 const EventSlug = ({ movie }) => {
   const [ticket, setTicket] = useState(1);
+  const [openMap, setOpenMap] = useState(false);
   const price = '500.00';
   const router = useRouter();
 
@@ -37,7 +39,11 @@ const EventSlug = ({ movie }) => {
   };
 
   return (
-    <div className="w-full lg:h-[calc(100vh-3rem)] flex justify-center pt-16 text-white pb-16 lg:pb-0">
+    <div
+      className={`w-full lg:h-[calc(100vh-3rem)] flex justify-center pt-16 text-white pb-16 lg:pb-0 relative ${
+        openMap ? 'bg-[#ffffff28]' : ''
+      }`}
+    >
       <div className=" w-[90%] lg:w-[80%] flex gap-8 lg:flex-row flex-col items-center lg:items-start  ">
         <div className="lg:h-[50rem] lg:w-[50%] ">
           <Image
@@ -77,8 +83,33 @@ const EventSlug = ({ movie }) => {
               <span>{movie.primaryImage.caption.plainText}</span>
             </div> */}
           </div>
-
-          <div className="lg:w-[60%] w-full max-h-[30rem]  mt-20 py-8 px-8 flex flex-col gap-4 bg-[#181717] text-white rounded-lg shadow-2xl shadow-[#ffffff18] ">
+          {/* Event details part */}
+          <div className="relative lg:w-[60%] w-full max-h-[30rem]  mt-20 py-8 px-8 flex flex-col gap-4 bg-[#181717] text-white rounded-lg shadow-2xl shadow-[#ffffff18] ">
+            {/* opens an embedded map when openMap is true */}
+            {openMap && (
+              <div className="absolute w-full h-full left-0 top-0 flex flex-col justify-center ">
+                <div className="relative flex justify-end  ">
+                  <div
+                    onClick={() => {
+                      setOpenMap(false);
+                    }}
+                    className="cursor-pointer"
+                  >
+                    <Close fontSize="large" />
+                  </div>
+                </div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9990.646823416344!2d85.3119546865054!3d27.710274900336632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19ab6ef58311%3A0x2a0e779632ad55b3!2sDurbar%20Cinemax%20managed%20by%20QFX!5e0!3m2!1sen!2snp!4v1701859695078!5m2!1sen!2snp"
+                  width="600"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-[30rem] lg:h-full"
+                ></iframe>
+              </div>
+            )}
             <div className="font-semibold text-2xl w-full flex">
               <span>Event Details</span>
             </div>
@@ -102,8 +133,16 @@ const EventSlug = ({ movie }) => {
               </div>
               <div className="flex flex-col ml-4 gap-4">
                 <span className="text-neutral-400 ">Location</span>
-                <div>
+                <div className="flex flex-col gap-4 ">
                   <span>Kathmandu, Nepal </span>
+                  <span
+                    className="hover:underline text-blue-600 cursor-pointer"
+                    onClick={() => {
+                      setOpenMap(true);
+                    }}
+                  >
+                    View on map
+                  </span>
                 </div>
               </div>
             </div>
