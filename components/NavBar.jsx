@@ -47,7 +47,7 @@ const NavBar = () => {
       {menuBox && (
         <div className="relative w-[80%] z-[100] bg-inherit mb-2">
           <ul className="flex flex-col items-center h-full gap-2">
-            <div className="w-full flex flex-col gap-1 border-2">
+            <div className="w-full flex flex-col gap-1">
               <Link
                 href={'/'}
                 className="w-full py-2 flex justify-center bg-[#00000048] rounded-sm "
