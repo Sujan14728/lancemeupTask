@@ -29,6 +29,7 @@ const Movies = ({ movies }) => {
 
 export default Movies;
 
+//fetches data whose titleType is movies only
 export const getServerSideProps = async () => {
   const options = {
     method: 'GET',
@@ -57,19 +58,3 @@ export const getServerSideProps = async () => {
     };
   }
 };
-
-// 0:null
-// 1:"movie"
-// 2:"musicVideo"
-// 3:"podcastEpisode"
-// 4:"podcastSeries"
-// 5:"short"
-// 6:"tvEpisode"
-// 7:"tvMiniSeries"
-// 8:"tvMovie"
-// 9:"tvPilot"
-// 10:"tvSeries"
-// 11:"tvShort"
-// 12:"tvSpecial"
-// 13:"video"
-// 14:"videoGame"

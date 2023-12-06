@@ -28,7 +28,7 @@ const Series = ({ series }) => {
 };
 
 export default Series;
-
+//fetches data whose titleType is tv series only
 export const getServerSideProps = async () => {
   const options = {
     method: 'GET',

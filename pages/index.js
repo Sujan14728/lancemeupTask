@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 
 const inter = Inter({ subsets: ['latin'] });
 
+//This is the home page component which gets props from getServerSideProps.
 export default function Home({ movies }) {
   const router = useRouter();
 

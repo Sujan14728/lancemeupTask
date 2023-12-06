@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+
+  //This part of code scrolls the page to top when a route is changed
   useEffect(() => {
     const handleRouteChange = () => {
       window.scrollTo(0, 0);
@@ -17,6 +19,8 @@ export default function App({ Component, pageProps }) {
     };
   }, [router.events]);
   const [loading, setLoading] = useState(false);
+
+  //This part of code tracks the route change and enables and disables loading state
   useEffect(() => {
     const start = () => {
       console.log('start');
@@ -39,6 +43,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <NavBar />
+      {/* This is responsible for rendering loading animation if loading is enabled else respective components are rendered */}
       {loading ? (
         <div className="absolute top-[3rem] text-6xl text-white w-full h-[calc(100vh-3rem)] flex items-center justify-center bg-black ">
           <div className="animate-bounce ">

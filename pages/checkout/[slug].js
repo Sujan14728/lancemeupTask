@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Image from 'next/image';
 import { ConfirmationNumber, ContentCut } from '@mui/icons-material';
+
+//This two libraries are used for generating pdfs of the invoice
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
@@ -37,7 +39,7 @@ const CheckoutSlug = ({ movie }) => {
   const [formErrors, setFormErrors] = useState({});
   const [eventDetails, setEventDetails] = useState([]);
 
-  //Form validation
+  //This function is used to validate all the data entered by the user
   const validateForm = () => {
     const errors = {};
 
@@ -73,9 +75,10 @@ const CheckoutSlug = ({ movie }) => {
     return emailRegex.test(email);
   };
 
+  // This function is activated when clicks the confirm&pay button
+  // The event details are stored in a state after the form is validated
   const handleConfirm = () => {
     if (validateForm()) {
-      console.log('valid');
       setInvoiceBox(true);
       const newEventDetails = [];
       for (let i = 1; i <= ticket; i++) {
@@ -104,12 +107,10 @@ const CheckoutSlug = ({ movie }) => {
       const pdfHeight = pdf.internal.pageSize.getHeight();
       const imgWidth = canvas.width;
       const imgHeight = canvas.height;
-      // const imgWidth = pdfWidth;
-      // const imgHeight = pdfHeight;
       const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
       const imgX = (pdfWidth - imgWidth * ratio) / 2;
-      // const imgX = 0;
       const imgY = 0;
+
       pdf.addImage(
         imgData,
         'PNG',
@@ -133,6 +134,7 @@ const CheckoutSlug = ({ movie }) => {
         </div>
         <hr className="border-neutral-400" />
         <div className="flex w-full gap-8 lg:flex-row flex-col">
+          {/* This is the form where user enters their information */}
           <form className="flex flex-col gap-8 w-full lg:w-[60%] bg-[#1a1919] p-4 rounded-lg pb-8 ">
             <span className="text-2xl">Information</span>
             <div className="flex flex-col relative w-full ">
@@ -346,6 +348,7 @@ const CheckoutSlug = ({ movie }) => {
           </div>
         </div>
       </div>
+      {/* This is invoice part where form details and event details are used for creating invoice pdf */}
       {invoiceBox && (
         <>
           <div className="absolute top-0 w-[95%] lg:w-[60%] h-fit mt-4 z-[100] bg-[#f7f8f9] pb-8">

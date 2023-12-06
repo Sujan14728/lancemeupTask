@@ -28,7 +28,7 @@ const MusicVideo = ({ music }) => {
 };
 
 export default MusicVideo;
-
+//fetches data whose titleType is music video only
 export const getServerSideProps = async () => {
   const options = {
     method: 'GET',

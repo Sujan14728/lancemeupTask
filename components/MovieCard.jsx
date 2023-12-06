@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
+//This component is rendered on every page where an event card is required.
 const MovieCard = ({ item }) => {
   return (
     <div className="w-full h-fit ">
