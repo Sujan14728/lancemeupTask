@@ -121,6 +121,16 @@ const CheckoutSlug = ({ movie }) => {
       );
       pdf.save('invoice.pdf');
       setInvoiceBox(false);
+      //setting user details to the initial state
+      setDetails({
+        name: '',
+        email: '',
+        address: '',
+        country: 'Nepal',
+        state: '',
+        city: '',
+        code: '',
+      });
     });
   };
 
@@ -148,6 +158,7 @@ const CheckoutSlug = ({ movie }) => {
                 placeholder="eg. Jane cooper"
                 className="outline-none border-[1px] border-neutral-400 p-2 bg-inherit rounded-lg text-lg "
                 required
+                value={details.name}
                 onChange={(e) => {
                   setDetails({ ...details, name: e.target.value });
                 }}
@@ -170,6 +181,7 @@ const CheckoutSlug = ({ movie }) => {
                   placeholder="eg. janecooper@xyz.com"
                   className="outline-none border-[1px] border-neutral-400 p-2 bg-inherit rounded-lg text-lg "
                   required
+                  value={details.email}
                   onChange={(e) => {
                     setDetails({ ...details, email: e.target.value });
                   }}
@@ -190,6 +202,7 @@ const CheckoutSlug = ({ movie }) => {
                   id="address"
                   className="outline-none border-[1px] border-neutral-400 p-2 bg-inherit rounded-lg text-lg "
                   required
+                  value={details.address}
                   onChange={(e) => {
                     setDetails({ ...details, address: e.target.value });
                   }}
@@ -238,6 +251,7 @@ const CheckoutSlug = ({ movie }) => {
                   id="state"
                   className="outline-none border-[1px] border-neutral-400 p-2 bg-inherit rounded-lg text-lg "
                   required
+                  value={details.state}
                   onChange={(e) => {
                     setDetails({ ...details, state: e.target.value });
                   }}
@@ -260,6 +274,7 @@ const CheckoutSlug = ({ movie }) => {
                   id="city"
                   className="outline-none border-[1px] border-neutral-400 p-2 bg-inherit rounded-lg text-lg "
                   required
+                  value={details.city}
                   onChange={(e) => {
                     setDetails({ ...details, city: e.target.value });
                   }}
@@ -280,6 +295,7 @@ const CheckoutSlug = ({ movie }) => {
                   id="code"
                   className="outline-none border-[1px] border-neutral-400 p-2 bg-inherit rounded-lg text-lg "
                   required
+                  value={details.code}
                   onChange={(e) => {
                     setDetails({ ...details, code: e.target.value });
                   }}
