@@ -1,20 +1,17 @@
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
+import React from 'react';
 import axios from 'axios';
 import MovieCard from '@/components/MovieCard';
 import { useRouter } from 'next/router';
 
-const inter = Inter({ subsets: ['latin'] });
-
-export default function Home({ movies }) {
+const MusicVideo = ({ music }) => {
   const router = useRouter();
   const handleEventClick = (id) => {
     router.push(`/event/${id}`);
   };
   return (
     <div className="w-full h-full flex justify-center mt-16 mb-16 text-white ">
-      <div className="w-[80%] flex flex-wrap gap-y-8 ">
-        {movies.map((item, index) => (
+      <div className="w-[80%] flex flex-wrap  gap-y-8 ">
+        {music.map((item, index) => (
           <div
             className="w-full md:w-[49%] lg:w-[32%] xl:w-[24%] md:mx-[0.5%] cursor-pointer"
             key={index}
@@ -28,14 +25,16 @@ export default function Home({ movies }) {
       </div>
     </div>
   );
-}
+};
+
+export default MusicVideo;
 
 export const getServerSideProps = async () => {
   const options = {
     method: 'GET',
-    url: 'https://moviesdatabase.p.rapidapi.com/titles?page=2',
+    url: 'https://moviesdatabase.p.rapidapi.com/titles',
     params: {
-      list: 'top_boxoffice_200',
+      titleType: 'musicVideo',
     },
     headers: {
       'X-RapidAPI-Key': 'bdb8f91cacmshb4adc5706985803p18211bjsnb2a5c6e46cb6',
@@ -45,9 +44,9 @@ export const getServerSideProps = async () => {
 
   try {
     const response = await axios.request(options);
-    const movies = response.data.results;
+    const music = response.data.results;
     return {
-      props: { movies },
+      props: { music },
     };
   } catch (error) {
     console.error(error);
@@ -56,3 +55,19 @@ export const getServerSideProps = async () => {
     };
   }
 };
+
+// 0:null
+// 1:"movie"
+// 2:"musicVideo"
+// 3:"podcastEpisode"
+// 4:"podcastSeries"
+// 5:"short"
+// 6:"tvEpisode"
+// 7:"tvMiniSeries"
+// 8:"tvMovie"
+// 9:"tvPilot"
+// 10:"tvSeries"
+// 11:"tvShort"
+// 12:"tvSpecial"
+// 13:"video"
+// 14:"videoGame"
