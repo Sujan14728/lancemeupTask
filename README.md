@@ -1,40 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# MovieSansar
 
-First, run the development server:
+This is a simple movie website built using Next.js. The project showcases basic features of a movie website, including listing movies, displaying details, providing a checkout flow and generating invoice in pdf.
 
+
+## Features
+
+- Listing Movies, TV Series & Music Video
+- Checkout flow for purchasing movie tickets.
+- Responsive design for both mobile and desktop.
+
+
+
+## Tech Stack
+
+**Client:** React, Next JS, TailwindCSS
+
+**Library:** Axios, MUI
+
+
+## Demo
+
+Link: https://moviesansar.vercel.app/                                         
+
+
+## Installation
+
+To get started with MovieSansar, follow these installation steps:
+
+1. Clone the repository to your local machine:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/Sujan14728/lancemeupTask.git
+```
+2. Install the necessary dependencies for the project:
+```bash
+  cd lancemeupTask
+  npm install
+```
+3. Create .env.local file in the main directory of the app and generate token from here: https://rapidapi.com/SAdrian/api/moviesdatabase
+Inside the .env.local file write the following code:
+```bash    
+NEXT_PUBLIC_XRapidAPIKey=your_api_key
+```
+For quick test, you can use this api key:
+```bash    
+NEXT_PUBLIC_XRapidAPIKey='bdb8f91cacmshb4adc5706985803p18211bjsnb2a5c6e46cb6'
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+4. Start the app:
+```bash
+  npm run dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+5.Access the application through your web browser.
+    
+## Challenges & How I tackled it.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Responsive Design:
+- Challenge: Ensuring a consistent and appealing user experience across various devices was challenging. Different screen sizes required careful handling of layouts and styles.
+- Solution: I utilized the responsive design features of Tailwind CSS to adjust the layout based on screen size.  Additionally, testing on multiple devices helped identify and address specific issues.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. External API Integration:
+- Challenge: Integrating data from an external API posed challenges, including handling asynchronous requests 
+- Solution: I utilized the feature of NEXT JS i.e. getServerSideProps and used axios library to fetch the data from external api. The getServerSideProps ensured a faster api response which helped in higher performance.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
