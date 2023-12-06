@@ -38,7 +38,7 @@ export const getServerSideProps = async () => {
       list: 'top_boxoffice_200',
     },
     headers: {
-      'X-RapidAPI-Key': 'bdb8f91cacmshb4adc5706985803p18211bjsnb2a5c6e46cb6',
+      'X-RapidAPI-Key': process.env.NEXT_PUBLIC_XRapidAPIKey,
       'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
     },
   };
