@@ -1,7 +1,7 @@
 import NavBar from '@/components/NavBar';
 import '@/styles/globals.css';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -16,14 +16,41 @@ export default function App({ Component, pageProps }) {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const start = () => {
+      console.log('start');
+      setLoading(true);
+    };
+    const end = () => {
+      console.log('finished');
+      setLoading(false);
+    };
+    router.events.on('routeChangeStart', start);
+    router.events.on('routeChangeComplete', end);
+    router.events.on('routeChangeError', end);
+    return () => {
+      router.events.off('routeChangeStart', start);
+      router.events.off('routeChangeComplete', end);
+      router.events.off('routeChangeError', end);
+    };
+  }, []);
 
-  if (router.pathname.includes('/invoice')) return <Component {...pageProps} />;
-  else {
-    return (
-      <>
-        <NavBar />
+  return (
+    <>
+      <NavBar />
+      {loading ? (
+        <div className="absolute top-[3rem] text-6xl text-white w-full h-[calc(100vh-3rem)] flex items-center justify-center bg-black ">
+          <div className="animate-bounce ">
+            <span className="font-semibold text-5xl lg:text-9xl">
+              Movie
+              <span className="text-red-500 font-semibold">Sansar</span>{' '}
+            </span>
+          </div>
+        </div>
+      ) : (
         <Component {...pageProps} />
-      </>
-    );
-  }
+      )}
+    </>
+  );
 }

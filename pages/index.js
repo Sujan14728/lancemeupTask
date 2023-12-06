@@ -8,6 +8,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export default function Home({ movies }) {
   const router = useRouter();
+
+  //Opens a event slug page which contains the data of the movie which is retrieved from the id passed from the params
   const handleEventClick = (id) => {
     router.push(`/event/${id}`);
   };
@@ -30,6 +32,8 @@ export default function Home({ movies }) {
   );
 }
 
+//fetching data from external api.
+//getServerSideProps allows to fetch the data in server side which helps in performance of the website.
 export const getServerSideProps = async () => {
   const options = {
     method: 'GET',

@@ -489,6 +489,8 @@ const CheckoutSlug = ({ movie }) => {
 
 export default CheckoutSlug;
 
+// It first retrieves the slug from the params of the link which is the id of certain movie/series/music.
+// Then it fetch the data of that event from the id and returns the data as props
 export const getServerSideProps = async (context) => {
   const slug = context.params.slug;
   const options = {

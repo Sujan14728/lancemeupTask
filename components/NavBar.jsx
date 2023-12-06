@@ -46,32 +46,35 @@ const NavBar = () => {
       </div>
       {menuBox && (
         <div className="relative w-[80%] z-[100] bg-inherit mb-2">
-          <ul className="flex flex-col items-center h-full gap-1">
-            <Link
-              href={'/'}
-              className="w-[10rem] py-2 flex justify-center bg-[#00000048] rounded-sm "
-            >
-              Home
-            </Link>
+          <ul className="flex flex-col items-center h-full gap-2">
+            <div className="w-full flex flex-col gap-1 border-2">
+              <Link
+                href={'/'}
+                className="w-full py-2 flex justify-center bg-[#00000048] rounded-sm "
+              >
+                Home
+              </Link>
 
-            <Link
-              href={'/musicvideo'}
-              className="w-[10rem] py-2 flex justify-center bg-[#00000048] rounded-sm "
-            >
-              Music Video
-            </Link>
-            <Link
-              href={'/movies'}
-              className="w-[10rem] py-2 flex justify-center bg-[#00000048] rounded-sm "
-            >
-              Movies
-            </Link>
-            <Link
-              href={'/tvseries'}
-              className="w-[10rem] py-2 flex justify-center bg-[#00000048] rounded-sm "
-            >
-              TV Series
-            </Link>
+              <Link
+                href={'/musicvideo'}
+                className="w-full py-2 flex justify-center bg-[#00000048] rounded-sm "
+              >
+                Music Video
+              </Link>
+              <Link
+                href={'/movies'}
+                className="w-full py-2 flex justify-center bg-[#00000048] rounded-sm "
+              >
+                Movies
+              </Link>
+              <Link
+                href={'/tvseries'}
+                className="w-full py-2 flex justify-center bg-[#00000048] rounded-sm "
+              >
+                TV Series
+              </Link>
+            </div>
+
             <div className="flex flex-col w-full items-center gap-2 ">
               <span className="w-[6rem] py-2 flex justify-center bg-red-500 rounded-lg cursor-pointer">
                 Login
