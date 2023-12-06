@@ -219,13 +219,6 @@ const CheckoutSlug = ({ movie }) => {
                 <label htmlFor="country" className="text-xl mb-2">
                   Country*
                 </label>
-                {/* <input
-                  type="text"
-                  name="country"
-                  id="country"
-                  className="outline-none border-[1px] border-neutral-400 p-2 bg-inherit rounded-lg text-lg "
-                  required
-                /> */}
                 <select
                   name="country"
                   id="country"
@@ -464,7 +457,7 @@ const CheckoutSlug = ({ movie }) => {
                         <span className="text-xl font-semibold">
                           {item.event}
                         </span>
-                        <span className="text-neutral-500">
+                        <span className="text-neutral-500 text-[0.8rem] lg:text-base ">
                           Sat, Apr 30, 2022 11:30AM
                         </span>
                         <div className="flex gap-4 text-neutral-500 font-bold items-center">
